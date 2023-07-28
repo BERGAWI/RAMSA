@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<odoo>
+    <template id="report_saleorder_document_inherit" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//div[@id='total']" position="after">
+            <h5 style="text-align:left;">
+                <div class="clearfix mb-4">
+                    <div id="total" class="row">
+                        <div t-attf-class="#{'col-6' if report_type != 'html' else 'col-sm-7 col-md-6'} ms-auto">
+                            <table class="table table-sm table-borderless" style="page-break-inside: avoid;" dir="rtl">
+                                <tr>
+                                    <td> الاجمالى قبل الخصم </td>
+                                    <td>
+                                        <span t-esc="doc.amount_before_discount"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>  الخصم </td>
+                                    <td>
+                                        <span t-esc="doc.amount_discount"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>  اﻻجمالى بعد الخصم </td>
+                                    <td>
+                                        <span t-esc="doc.amount_before_discount - doc.amount_discount"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </h5>
+        </xpath>
+        <xpath expr="//table[1]/thead/tr/th[4]" position="replace"/>
+        <xpath expr="//table[1]/tbody/t[2]/tr[1]/t[1]/td[4]" position="replace"/>
+    </template>
+</odoo>

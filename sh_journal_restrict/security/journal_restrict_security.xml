@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="group_journal_restrict_feature" model="res.groups">
+        <field name="name">Enable Journal Restrict Feature</field>
+    </record>
+
+    <record id="group_access_of_assign_user" model="res.groups">
+        <field name="name">Access of Assign User in Journal</field>
+        <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+    </record>
+
+    <record model="ir.rule" id="journal_security_rule">
+        <field name="name">Journals restricted to users</field>
+        <field name="model_id" ref="account.model_account_journal"/>
+        <field name="groups" eval="[(4, ref('sh_journal_restrict.group_access_of_assign_user'))]"/>
+        <field name="domain_force">['|', ('user_ids', '=', False), ('id', 'in', user.journal_ids.ids)]</field>
+    </record>
+
+</odoo>

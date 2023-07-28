@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<odoo>
+    <!--     Add Users in Account Journal form view  -->
+    <record id="sh_account_journal_restrict_view" model="ir.ui.view">
+        <field name="name">account.journal.form</field>
+        <field name="model">account.journal</field>
+        <field name="inherit_id" ref="account.view_account_journal_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='type']" position="after">
+                <field name="user_ids" widget="many2many_tags" groups="sh_journal_restrict.group_access_of_assign_user" />
+            </xpath>
+        </field>
+    </record>
+
+    <!--     Add Account Journal in User form view  -->
+    <record id="sh_add_res_user_restrict_view" model="ir.ui.view">
+        <field name="name">res.users.form</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('oe_title')]" position="inside">
+                <group>
+                    <field name="journal_ids" widget="many2many_tags" groups="sh_journal_restrict.group_access_of_assign_user" />
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

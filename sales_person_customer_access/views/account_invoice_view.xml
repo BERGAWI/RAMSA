@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="invoice_form_inherit_salesperson" model="ir.ui.view">
+        <field name="name">account.move.form</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+             <field name="company_id" position="after">
+                <field name="salesperson_ids" widget="many2many_tags"/>
+             </field>
+        </field>
+    </record>
+
+</odoo>
