@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<odoo>
+    <template id="purchase_order_reports" inherit_id="purchase.report_purchaseorder_document">
+        <xpath expr="//div[@id='total']" position="before">
+            <h5 style="text-align:left;">
+                <div class="clearfix mb-4">
+                    <div id="total" class="row">
+                        <div t-attf-class="#{'col-6' if report_type != 'html' else 'col-sm-7 col-md-6'} ms-auto">
+                            <table class="table table-sm table-borderless" style="page-break-inside: avoid;" dir="rtl">
+                                <tr>
+                                    <td>أجمالى الكميات</td>
+                                    <td>
+                                        <span t-esc="o.total_qty"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>أجمالى الاصناف</td>
+                                    <td>
+                                        <span t-esc="o.total_lines"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </h5>
+        </xpath>
+    </template>
+</odoo>

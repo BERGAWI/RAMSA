@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sale_representative,access.sale.representative,db_sales_custom.model_sale_representative,,1,1,1,1
+access_representative_company,access.representative.company,db_sales_custom.model_representative_company,,1,1,1,1
+access_emp_sale_report,emp_sale_report,db_sales_custom.model_emp_sale_report,,1,1,1,1

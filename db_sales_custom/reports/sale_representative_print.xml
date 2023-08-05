@@ -1,0 +1,48 @@
+<?xml version="1.0" ?>
+<odoo>
+    <record id="sale_representative_reports" model="ir.actions.report">
+        <field name="name"> طباعه التوصيل </field>
+        <field name="model">sale.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">db_sales_custom.representative_report_template</field>
+        <field name="report_file">db_sales_custom.representative_report_template</field>
+        <field name="print_report_name">'Representative Report - %s' % (object.name).replace('/', '')</field>
+        <field name="binding_model_id" ref="model_sale_order"/>
+        <field name="binding_type">report</field>
+    </record>
+
+
+    <template id="representative_report_template">
+    <t t-call="web.html_container">
+    <t t-foreach="docs" t-as="o">
+         <t t-call="web.external_layout">
+            <div class="oe_structure"/>
+            <div align="center">
+                <table border="1" class="table table-condensed" style="border-style:solid" dir="rtl">
+                    <tr>
+                        <td style="border: 1px solid black;color:black;background-color:#adb2b3;color:black;;"
+                            align="center" class="thead-light"> أسم العميل </td>
+                        <td style="border: 1px solid black;background-color:#white;color:black;" align="center"><span t-field="o.partner_id.name"/></td>
+                        <td style="border: 1px solid black;color:black;background-color:#adb2b3;color:black;;"
+                            align="center" class="thead-light"> القيمة المالية </td>
+                        <td style="border: 1px solid black;background-color:#white;color:black;" align="center"><span t-field="o.amount_total"/></td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid black;color:black;background-color:#adb2b3;color:black;;"
+                            align="center" class="thead-light"> عنوان العميل </td>
+                        <td style="border: 1px solid black;background-color:#white;color:black;" align="center">
+                            <span t-field="o.partner_id.street"/>
+                        </td>
+                        <td style="border: 1px solid black;color:black;background-color:#adb2b3;color:black;;"
+                            align="center" class="thead-light"> رقم هاتف العميل </td>
+                        <td style="border: 1px solid black;background-color:#white;color:black;" align="center"><span t-field="o.partner_id.phone"/></td>
+                    </tr>
+                </table>
+            </div>
+            <br/>
+         </t>
+    </t>
+    </t>
+    </template>
+
+</odoo>

@@ -1,0 +1,60 @@
+<odoo>
+
+    <template id="sale_report_print_template">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <t t-foreach="docs" t-as="doc">
+                    <div class="page">
+                        <div class="oe_structure"/>
+                <table border="1" class="table table-condensed" style="border-style:solid" dir="rtl">
+                            <tr>
+                                <td>
+                                    <span>أسم المندوب</span>
+                                </td>
+                                <td>
+                                    <span>أسم العميل</span>
+                                </td>
+                                <td>
+                                    <span>عنوان العميل</span>
+                                </td>
+                                <td>
+                                    <span>رقم هاتف العميل</span>
+                                </td>
+                                <td>
+                                    <span>القيمة المالية</span>
+                                </td>
+                            </tr>
+                            <tr t-foreach="doc.item_ids" t-as="line">
+                                <td>
+                                    <span t-esc="line.sales_representative_id.name"/>
+                                </td>
+                                <td>
+                                    <span t-esc="line.partner_id.name"/>
+                                </td>
+                                <td>
+                                    <span t-esc="line.delivery_address"/>
+                                </td>
+                                <td>
+                                    <span t-esc="line.mobile_number"/>
+                                </td>
+                                <td>
+                                    <span t-esc="line.amount_total"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <report
+            id="action_report_export_sale_order"
+            string="طباعه التوصيل"
+            model="emp.sale.report"
+            report_type="qweb-pdf"
+            name="db_sales_custom.sale_report_print_template"
+            file="db_sales_custom.sale_report_print_template"
+            menu="False"
+    />
+</odoo>

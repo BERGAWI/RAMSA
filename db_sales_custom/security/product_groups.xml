@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<odoo>
+        <record id="group_access_product_cost" model="res.groups">
+            <field name="name">Access to Product Cost</field>
+        </record>
+        <record id="group_access_unit_price" model="res.groups">
+            <field name="name">Can Edit Unit Price</field>
+        </record>
+</odoo>

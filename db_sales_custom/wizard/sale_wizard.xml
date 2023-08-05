@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id="emp_sales_report_form_view" model="ir.ui.view">
+            <field name="name">emp.sale.report.form</field>
+            <field name="model">emp.sale.report</field>
+            <field name="arch" type="xml">
+                <form string="Sales Report">
+                   <sheet>
+                    <group>
+                        <group>
+                            <field name="item_ids">
+                                <tree create="false">
+                                     <field name="name"/>
+                                     <field name="partner_id"/>
+                        <field name="sales_representative_id"/>
+                        <field name="amount_total"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="print_sales" string="Report" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_print_report_pdf_xls" model="ir.actions.act_window">
+            <field name="name">Sales Report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_view_types">list</field>
+            <field name="res_model">emp.sale.report</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+
+</odoo>

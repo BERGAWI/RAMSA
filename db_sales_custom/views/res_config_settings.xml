@@ -1,0 +1,44 @@
+<odoo>
+    <data>
+        <record id="res_config_settings_view_form" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.inherit</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="50"/>
+            <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//div[hasclass('app_settings_block')][@data-key='sale_management']" position="inside">
+                    <h2>Sale Orders Default Values</h2>
+                    <div class="row mt16 o_settings_container" name="so_default_values">
+                        <div class="col-12 col-lg-6 o_setting_box" id="so_virtual_location">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Delivery</span>
+                                <div class="text-muted">
+                                    Default Virtual Delivery Location
+                                </div>
+                                <div class="text-muted">
+                                    <field name="so_delivery_location_id"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box" id="so_payment_journal">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Payment</span>
+                                <div class="text-muted">
+                                    Default Payment Journal
+                                </div>
+                                <div class="text-muted">
+                                    <field name="so_payment_journal_id"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

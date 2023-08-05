@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_picking_form" model="ir.ui.view">
+            <field name="name">view.order.form</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='operations']" position="inside">
+                    <group>
+                        <group colspan="2"/>
+                        <group class="oe_subtotal_footer oe_right">
+                            <field name="total_demand_qty" colspan="2" readonly="1"/>
+                            <field name="total_done_qty" colspan="2" readonly="1"/>
+                            <field name="total_lines" colspan="2" readonly="1"/>
+                        </group>
+                    </group>
+                    <div class="clearfix"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

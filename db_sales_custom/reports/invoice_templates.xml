@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<odoo>
+    <template id="report_invoice_document_inherit" inherit_id="account.report_invoice_document">
+        <xpath expr="//div[@id='total']" position="before">
+            <h5 style="text-align:left;">
+                <div class="clearfix mb-4">
+                    <div id="total" class="row">
+                        <div t-attf-class="#{'col-6' if report_type != 'html' else 'col-sm-7 col-md-6'} ms-auto">
+                            <table class="table table-sm table-borderless" style="page-break-inside: avoid;" dir="rtl">
+                                <tr>
+                                    <td>أجمالى الكميات</td>
+                                    <td>
+                                        <span t-esc="o.total_qty"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>أجمالى الاصناف</td>
+                                    <td>
+                                        <span t-esc="o.total_lines"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </h5>
+        </xpath>
+        <xpath expr="//t/div/div/div/div" position="after">
+            <div t-if="o.delivery_address" class="col-auto col-3 mw-100 mb-2">
+                <strong>العنوان:</strong>
+                <p class="m-0" t-field="o.delivery_address"/>
+            </div>
+            <div t-if="o.mobile_number" class="col-auto col-3 mw-100 mb-2">
+                <strong>رقم الهاتف:</strong>
+                <p class="m-0" t-field="o.mobile_number"/>
+            </div>
+            <div t-if="o.sales_representative_id" class="col-auto col-3 mw-100 mb-2">
+                <strong>مندوب التوصيل:</strong>
+                <p class="m-0" t-field="o.sales_representative_id.name"/>
+            </div>
+        </xpath>
+    </template>
+</odoo>
+
